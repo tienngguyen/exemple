@@ -10,6 +10,6 @@ class HomeController extends Controller
 {
     public function index(){
         // echo "asdsa";
-        return view('layouts.home');
+        return view('home.content');
     }
 }
