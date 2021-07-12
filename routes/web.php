@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +14,14 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+// Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
+//     Route::get('/', 'HomeController@index')->name('home');
+// });
+
 Route::get('/dashboard', function () {
     return view('home.content');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
-Route::get('/index', [HomeController::class, 'index']);
+Route::get('/category', [HomeController::class, 'index'])->middleware(['auth']);
