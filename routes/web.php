@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,5 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/category', [HomeController::class, 'index'])->middleware(['auth']);
+Route::get('/customer', [CustomerController::class, 'index'])->middleware(['auth']);
+Route::get('/products', [ProductController::class, 'index'])->middleware(['auth']);
