@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\CustomersController;
+use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\AdminsController;
+use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\OrdersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +24,14 @@ use App\Http\Controllers\Admin\HomeController;
 // });
 
 Route::get('/dashboard', function () {
-    return view('home.content');
+    return view('backend.layouts.home');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
-Route::get('/category', [HomeController::class, 'index'])->middleware(['auth']);
+Route::get('/index', [HomeController::class, 'index'])->middleware(['auth']);
+Route::get('/customer', [CustomersController::class, 'index'])->middleware(['auth']);
+Route::get('/product', [ProductsController::class, 'index'])->middleware(['auth']);
+Route::get('/category', [CategoriesController::class, 'index'])->middleware(['auth']);
+Route::get('/order', [OrdersController::class, 'index'])->middleware(['auth']);
+Route::get('/admin', [AdminsController::class, 'index'])->middleware(['auth']);
