@@ -17,5 +17,5 @@ class Category extends Model
     {
         return $this->hasMany('App\Models\Admin\Product', 'category_id');
     }
-
+    public $timestamps = false;
 }

@@ -3,12 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Repositories\ProductRepository;
 
 class ProductsController extends Controller
 {
-    public function index(){
-        return view('backend.admins.products');
+    protected $productRepo;
+
+    public function __construct(ProductRepository $productRepo)
+    {
+        $this->productRepo = $productRepo;
     }
+
+    public function index()
+    {
+        $products = $this->productRepo->getAll();
+        return view('home.products', ['products' => $products]);
+    }
+
 }
