@@ -11,10 +11,5 @@ class ProductRepository extends  BaseRepository
         return Product::class;
     }
 
-    public function getProduct()
-    {
-        return $this->model->select('product_name')->take(5)->get();
-    }
-
     
 }
