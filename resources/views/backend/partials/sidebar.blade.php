@@ -27,28 +27,33 @@
                 </a>
                 <ul class="submenu ">
                     <li class="submenu-item ">
-                        <a href="{{ url('/product')}}">Products</a>
+                        <a href="{{ url('admin/product/')}}">Products</a>
                     </li>
                     <li class="submenu-item ">
-                        <a href="{{ url('/customer')}}">Customers</a>
+                        <a href="{{ url('admin/customer/')}}">Customers</a>
                     </li>
                     <li class="submenu-item ">
-                        <a href="{{ url('/category')}}">Category</a>
+                        <a href="{{ url('admin/categories')}}">Category</a>
                     </li>
                     <li class="submenu-item ">
-                        <a href="{{ url('/order')}}">Orders</a>
+                        <a href="{{ url('admin/orders/')}}">Orders</a>
                     </li>
                 </ul>
             </li>
 
  
             <li class="sidebar-item  ">
-                <a href="{{ url('/admin')}}" class='sidebar-link'>
+                <a href="{{ url('admin/admins/')}}" class='sidebar-link'>
                     <i class="bi bi-puzzle"></i>
                     <span>Admin</span>
                 </a>
             </li>
-
+            <li class="sidebar-item  ">
+                <a href="{{ url('/logout')}}" class='sidebar-link'>
+                    <i class="bi bi-puzzle"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
         </ul>
     </div>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>

@@ -17,7 +17,7 @@ class ProductsController extends Controller
     public function index()
     {
         $products = $this->productRepo->getAll();
-        return view('home.products', ['products' => $products]);
+        return view('backend.admins.products.products');
     }
 
 }

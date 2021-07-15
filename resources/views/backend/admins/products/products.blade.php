@@ -5,6 +5,9 @@
     <div class="row" id="table-striped">
         <div class="col-12">
             <div class="card">
+                <div style="padding: 20px">
+                    <a href="{{ url("/backend/product/create") }}" class="btn btn-info">Thêm sản phẩm</a>
+                </div>
                 <div class="card-content">
                     <div class="table-responsive">
                         <table class="table table-striped mb-0" id="table1">
