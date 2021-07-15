@@ -11,10 +11,20 @@ class CategoriesController extends Controller
 
     public function __construct(CategoryRepository $categoryRepo)
     {
-        $this->productRepo = $categoryRepo;
+        $this->categoryRepo = $categoryRepo;
     }
     
     public function index(){
         return view('backend.admins.category.categories');
+    }
+
+    /**
+     * Process datatables ajax request.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function anyData()
+    {
+        return $this->categoryRepo->getAllDataTable();
     }
 }

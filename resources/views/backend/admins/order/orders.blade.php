@@ -1,87 +1,37 @@
 @extends('backend.layouts.home')
-@section('tittle', 'Product')
+@section('tittle', 'Orders')
 @section('content')
-<section class="section">
-    <div class="row" id="table-striped">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-content">
-                    <div class="table-responsive">
-                        <table class="table table-striped mb-0" id="table1">
-                            <thead>
-                                <tr>
-                                    <th>NAME</th>
-                                    <th>RATE</th>
-                                    <th>SKILL</th>
-                                    <th>TYPE</th>
-                                    <th>LOCATION</th>
-                                    <th>ACTION</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-bold-500">Michael Right</td>
-                                    <td>$15/hr</td>
-                                    <td class="text-bold-500">UI/UX</td>
-                                    <td>Remote</td>
-                                    <td>Austin,Taxes</td>
-                                    <td><a href="#"><i
-                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                data-feather="mail"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-bold-500">Morgan Vanblum</td>
-                                    <td>$13/hr</td>
-                                    <td class="text-bold-500">Graphic concepts</td>
-                                    <td>Remote</td>
-                                    <td>Shangai,China</td>
-                                    <td><a href="#"><i
-                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                data-feather="mail"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-bold-500">Tiffani Blogz</td>
-                                    <td>$15/hr</td>
-                                    <td class="text-bold-500">Animation</td>
-                                    <td>Remote</td>
-                                    <td>Austin,Texas</td>
-                                    <td><a href="#"><i
-                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                data-feather="mail"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-bold-500">Ashley Boul</td>
-                                    <td>$15/hr</td>
-                                    <td class="text-bold-500">Animation</td>
-                                    <td>Remote</td>
-                                    <td>Austin,Texas</td>
-                                    <td><a href="#"><i
-                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                data-feather="mail"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-bold-500">Mikkey Mice</td>
-                                    <td>$15/hr</td>
-                                    <td class="text-bold-500">Animation</td>
-                                    <td>Remote</td>
-                                    <td>Austin,Texas</td>
-                                    <td><a href="#"><i
-                                                class="badge-circle badge-circle-light-secondary font-medium-1"
-                                                data-feather="mail"></i></a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-@endsection
+    <table class="table table-bordered" id="users-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>Updated At</th>
+            </tr>
+        </thead>
+    </table>
+@stop
 @section("appendjs")
 <script>
-    // Simple Datatable
-    let table1 = document.querySelector('#table1');
-    let dataTable = new simpleDatatables.DataTable(table1);
+    $(function() {
+        $('#users-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{!! route('admin.orders.getdata') !!}',
+            columns: [
+                { data: 'id', name: 'id' },
+                { data: 'customer_name', name: 'customer_name' },
+                { data: 'customer_email', name: 'customer_email' },
+                { data: 'customer_phone', name: 'customer_phone' },
+                { data: 'customer_address', name: 'customer_address' },
+                { data: 'order_status', name: 'order_status' },
+                { data: 'updated_at', name: 'updated_at' }
+            ]
+        });
+    });
 </script>
 @endsection

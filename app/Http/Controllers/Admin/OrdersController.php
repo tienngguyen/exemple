@@ -17,4 +17,14 @@ class OrdersController extends Controller
     public function index(){
         return view('backend.admins.order.orders');
     }
+
+    /**
+     * Process datatables ajax request.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function anyData()
+    {
+        return $this->odersRepo->getAllDataTable();
+    }
 }

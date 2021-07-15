@@ -1,53 +1,37 @@
 @extends('backend.layouts.home')
-@section('tittle', 'Customer')
+@section('tittle', 'Customers')
 @section('content')
-<div id="app">
-        <div class="page-heading">
-            <section class="section">
-                <div class="card">
-                    <div class="card-body">
-                        <table class="table table-striped" id="table1">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>City</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Graiden</td>
-                                    <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                    <td>076 4820 8838</td>
-                                    <td>Offenburg</td>
-                                    <td>
-                                        <span class="badge bg-success">Active</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Dale</td>
-                                    <td>fringilla.euismod.enim@quam.ca</td>
-                                    <td>0500 527693</td>
-                                    <td>New Quay</td>
-                                    <td>
-                                        <span class="badge bg-success">Active</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-        </div>
-</div>
-
-@endsection
+    <table class="table table-bordered" id="users-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>Updated At</th>
+            </tr>
+        </thead>
+    </table>
+@stop
 @section("appendjs")
 <script>
-    // Simple Datatable
-    let table1 = document.querySelector('#table1');
-    let dataTable = new simpleDatatables.DataTable(table1);
+    $(function() {
+        $('#users-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{!! route('admin.customer.getdata') !!}',
+            columns: [
+                { data: 'id', name: 'id' },
+                { data: 'customer_name', name: 'customer_name' },
+                { data: 'customer_email', name: 'customer_email' },
+                { data: 'customer_phone', name: 'customer_phone' },
+                { data: 'customer_address', name: 'customer_address' },
+                { data: 'order_status', name: 'order_status' },
+                { data: 'updated_at', name: 'updated_at' }
+            ]
+        });
+    });
 </script>
 @endsection

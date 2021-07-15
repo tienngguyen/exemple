@@ -43,7 +43,7 @@
 
  
             <li class="sidebar-item  ">
-                <a href="{{ url('admin/admins/')}}" class='sidebar-link'>
+                <a href="{{ url('admin/users/')}}" class='sidebar-link'>
                     <i class="bi bi-puzzle"></i>
                     <span>Admin</span>
                 </a>

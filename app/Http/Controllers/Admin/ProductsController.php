@@ -16,8 +16,17 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $products = $this->productRepo->getAll();
         return view('backend.admins.products.products');
+    }
+    
+    /**
+     * Process datatables ajax request.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function anyData()
+    {
+        return $this->productRepo->getAllDataTable();
     }
 
 }

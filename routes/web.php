@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\AdminsController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\OrdersController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
@@ -36,6 +37,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::group(['prefix' => 'product','as' => 'product.'], function () {
         Route::get('/',[ProductsController::class, 'index'])->name('index');
+        Route::get('/getdata',[ProductsController::class, 'anyData'])->name('getdata');
         //output: admin/product/
         Route::get('/create',[ProductsController::class, 'update'])->name('create');
         Route::post('/store',[ProductsController::class, 'update'])->name('store');
@@ -43,6 +45,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::group(['prefix' => 'categories','as' => 'categories.'], function () {
         Route::get('/',[CategoriesController::class, 'index'])->name('index');
+        Route::get('/getdata',[CategoriesController::class, 'anyData'])->name('getdata');
+
         //output: admin/categories/
         Route::get('/create',[CategoriesController::class, 'update'])->name('create');
         Route::post('/store',[CategoriesController::class, 'update'])->name('store');
@@ -50,12 +54,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::group(['prefix' => 'customer','as' => 'customer.'], function () {
         Route::get('/',[CustomersController::class, 'index'])->name('index');
+        Route::get('/getdata',[CustomersController::class, 'anyData'])->name('getdata');
+
         //output: admin/customer/
     });
     
     Route::group(['prefix' => 'orders','as' => 'orders.'], function () {
         Route::get('/',[OrdersController::class, 'index'])->name('index');
+        Route::get('/getdata',[OrdersController::class, 'anyData'])->name('getdata');
+
         //output: admin/orders/
+    });
+    Route::group(['prefix' => 'users','as' => 'user.'], function () {
+        Route::get('/',[UserController::class, 'index'])->name('');
+        Route::get('/getdata',[UserController::class, 'anyData'])->name('getdata');
+        Route::get('/show',[UserController::class, 'show'])->name('show');
     });
 
 });

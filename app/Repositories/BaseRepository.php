@@ -2,18 +2,27 @@
 
 namespace App\Repositories;
 
+use Yajra\Datatables\Datatables;
+
 abstract class BaseRepository
 {
-    //model muốn tương tác
-    protected $model;
+/**
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $_model;
 
-   //khởi tạo
+    /**
+     * EloquentRepository constructor.
+     */
     public function __construct()
     {
         $this->setModel();
     }
 
-    //lấy model tương ứng
+    /**
+     * get model
+     * @return string
+     */
     abstract public function getModel();
 
     /**
@@ -21,26 +30,27 @@ abstract class BaseRepository
      */
     public function setModel()
     {
-        $this->model = app()->make(
+        $this->_model = app()->make(
             $this->getModel()
         );
     }
 
+
     public function getAll()
     {
-        return $this->model->all();
+        return $this->_model->all();
     }
 
     public function find($id)
     {
-        $result = $this->model->find($id);
+        $result = $this->_model->find($id);
 
         return $result;
     }
 
     public function create($attributes = [])
     {
-        return $this->model->create($attributes);
+        return $this->_model->create($attributes);
     }
 
     public function update($id, $attributes = [])
@@ -64,5 +74,11 @@ abstract class BaseRepository
         }
 
         return false;
+    }
+
+    public function getAllDataTable()
+    {
+        return Datatables::of($this->_model::query())->make(true);
+        
     }
 }

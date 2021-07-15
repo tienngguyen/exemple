@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Admin\Product;
+use Yajra\Datatables\Datatables;
+
 
 class ProductRepository extends  BaseRepository
 {
@@ -11,5 +13,4 @@ class ProductRepository extends  BaseRepository
         return Product::class;
     }
 
-    
 }
