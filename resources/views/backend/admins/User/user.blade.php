@@ -4,8 +4,8 @@
     <table class="table table-bordered" id="users-table">
         <thead>
             <tr>
-                <th>Avatar</th>
                 <th>Id</th>
+                <th>Avatar</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Action</th>
@@ -23,8 +23,8 @@
                 serverSide: true,
                 ajax: '{!! route('admin.user.getdata') !!}',
                 columns: [
-                    { data: 'avatar', name: 'avatar' },
                     { data: 'id', name: 'id' },
+                    { data: 'avatar', name: 'avatar' },
                     { data: 'name', name: 'name' },
                     { data: 'email', name: 'email' },
                     { data: 'action', name: 'action' },

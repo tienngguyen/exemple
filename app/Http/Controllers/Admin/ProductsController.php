@@ -18,7 +18,7 @@ class ProductsController extends Controller
     {
         return view('backend.admins.products.products');
     }
-    
+
     /**
      * Process datatables ajax request.
      *
@@ -26,7 +26,14 @@ class ProductsController extends Controller
      */
     public function anyData()
     {
-        return $this->productRepo->getAllDataTable();
+        return $this->productRepo->getAllData();
+    }
+
+    public function show($id)
+    {
+        $product= $this->productRepo->find($id);
+        $this->data["product"] = $product;
+        return view('backend.admins.products.edit',$this->data);
     }
 
 }

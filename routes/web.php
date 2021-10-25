@@ -25,7 +25,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 //     Route::get('/', 'HomeController@index')->name('home');
 // });
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('backend.layouts.home');
 })->middleware(['auth'])->name('dashboard');
 
@@ -38,9 +38,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::group(['prefix' => 'product','as' => 'product.'], function () {
         Route::get('/',[ProductsController::class, 'index'])->name('index');
         Route::get('/getdata',[ProductsController::class, 'anyData'])->name('getdata');
+        Route::get('/show/{id?}',[ProductsController::class, 'show'])->name('show');
         //output: admin/product/
-        Route::get('/create',[ProductsController::class, 'update'])->name('create');
-        Route::post('/store',[ProductsController::class, 'update'])->name('store');
+        Route::get('/create',[ProductsController::class, 'store'])->name('create');
+        Route::post('/edit/{id}',[ProductsController::class, 'edit'])->name('edit');
     });
 
     Route::group(['prefix' => 'categories','as' => 'categories.'], function () {

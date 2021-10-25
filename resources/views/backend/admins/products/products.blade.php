@@ -9,6 +9,7 @@
                 <th>Price</th>
                 <th>Publish</th>
                 <th>Quantity</th>
+                <th>Action</th>
                 <th>Update at</th>
             </tr>
         </thead>
@@ -27,6 +28,7 @@
                     { data: 'price', name: 'price' },
                     { data: 'publish', name: 'publish' },
                     { data: 'quantity', name: 'quantity' },
+                    { data: 'action', name: 'action' },
                     { data: 'updated_at', name: 'updated_at' }
                 ]
             });
