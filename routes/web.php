@@ -41,7 +41,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::get('/show/{id?}',[ProductsController::class, 'show'])->name('show');
         //output: admin/product/
         Route::get('/create',[ProductsController::class, 'store'])->name('create');
-        Route::post('/edit/{id}',[ProductsController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}',[ProductsController::class, 'update'])->name('update');
     });
 
     Route::group(['prefix' => 'categories','as' => 'categories.'], function () {
@@ -59,7 +59,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
         //output: admin/customer/
     });
-    
+
     Route::group(['prefix' => 'orders','as' => 'orders.'], function () {
         Route::get('/',[OrdersController::class, 'index'])->name('index');
         Route::get('/getdata',[OrdersController::class, 'anyData'])->name('getdata');
